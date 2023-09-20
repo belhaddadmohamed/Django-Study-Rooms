@@ -22,7 +22,7 @@ class MessageForm(ModelForm):
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['name', 'username', 'password1', 'password2']
+        fields = ['name', 'username', 'email', 'password1', 'password2']
 
 
 class UserForm(ModelForm):

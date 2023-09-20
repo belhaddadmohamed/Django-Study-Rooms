@@ -19,21 +19,21 @@ def loginUser(request):
         return redirect('home')
 
     if request.method == 'POST':
-        username = request.POST['username'].lower()
+        email = request.POST['email'].lower()
         password = request.POST['password']
 
         try:
-            user = User.objects.get(username=username)
+            user = User.objects.get(email=email)
         except:
             messages.error(request, "User doesn't exist !!")
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, "Hello "+str(user.first_name))
             return redirect(request.GET.get('next') if 'next' in request.GET else 'home')
         else:
-            messages.error(request, "password or username incorrect !!")
+            messages.error(request, "password or email incorrect !!")
 
     context = {'page': page}
 
@@ -152,6 +152,7 @@ def profile(request, pk):
     return render(request, 'base/profile.html', context)
 
 
+
 @login_required(login_url='login')
 def update_user(request):
     user = request.user
@@ -166,6 +167,7 @@ def update_user(request):
     context = {'form': form}
 
     return render(request, 'base/update-user.html', context)
+
 
 
 @login_required(login_url='login')
@@ -245,6 +247,7 @@ def topics(request):
     context = {'topics': topics}
 
     return render(request, 'base/topics.html', context)
+
 
 
 def activity(request):
