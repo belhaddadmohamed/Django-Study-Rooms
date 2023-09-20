@@ -1,8 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
-
-
-# class User():
+from users.models import User
+# from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import User
 
 
 class Topic(models.Model):
@@ -10,6 +9,7 @@ class Topic(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 class Room(models.Model):
@@ -27,6 +27,7 @@ class Room(models.Model):
     def __str__(self):
         return self.name
     
+
 
 class Message(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

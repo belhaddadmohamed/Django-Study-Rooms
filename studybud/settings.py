@@ -41,10 +41,13 @@ INSTALLED_APPS = [
 
     "base.apps.BaseConfig",
     "api.apps.ApiConfig",
+    "users.apps.UsersConfig",
 
     "rest_framework",
     "corsheaders",
 ]
+
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
