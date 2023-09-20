@@ -1,0 +1,58 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <!-- Font Awesome CDN link for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  -->
+    
+    <title>StudyBuddy - Find study partners around the world!</title>
+  </head>
+
+  <body>
+
+    {% include 'navbar.html' %}
+
+
+    {% if messages %}
+      <div class="messages">
+        <ul class="notifications">
+          {% for message in messages %}
+            <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
+
+            
+            <li {% if message.tags %} class="toast {{ message.tags }}" id="{{ message.tags }}"{% endif %}>
+              <div class="column">
+                <!-- <i class="fa-solid" data-icon="{{message}}" id="icon_i"></i> -->
+                <span>{{message}}</span>
+              </div>
+              <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>
+            </li>
+          
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+
+    
+
+
+    {% block content %}
+    
+    {% endblock content %}
+
+
+
+    
+    
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

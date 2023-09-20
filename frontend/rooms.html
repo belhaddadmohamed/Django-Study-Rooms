@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+</head>
+<body>
+    
+    <div id="rooms">
+        <ul id="participants">
+
+        </ul>
+    </div>
+    
+    
+</body>
+
+    <script>
+        rooms = document.getElementById('rooms')
+        participants = document.getElementById('participants')
+
+        url = 'http://127.0.0.1:8000/api/rooms/'
+        fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data){
+
+            for(let i=0; i<data.length; i++){
+                for(let j=0; j<data[i].participants.length; j++){
+                    console.log(data[i].participants[j])
+                    participants.innerHTML += `<li> ${data[i].participants[j]} </li>`
+                }
+
+                rooms.innerHTML += `
+                    <div>${data[i].name}</div>
+                    <div>${data[i].topic.name}</div>
+                    <h4>Date created: ${data[i].created}</h4>          
+                    <hr>  
+                `
+                
+            }
+        })
+
+
+
+    </script>
+</html>
