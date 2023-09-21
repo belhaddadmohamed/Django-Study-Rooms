@@ -403,8 +403,6 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  
-  position: relative;
 }
 
 .layout--3 > .container > div:first-child {
