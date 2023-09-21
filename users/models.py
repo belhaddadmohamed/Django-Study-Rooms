@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms.widgets import FileInput
 from django.contrib.auth.models import AbstractUser
 
 
