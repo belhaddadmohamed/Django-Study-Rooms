@@ -80,7 +80,7 @@ def delete_message(request, pk):
     return render(request, 'base/delete.html', context)
 
 
-  
+
 @login_required(login_url='login')
 def create_room(request):
     form = RoomForm()

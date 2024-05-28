@@ -9,4 +9,7 @@ urlpatterns = [
     path('create-room/', views.createRoom),
     path('update-room/<int:pk>/', views.updateRoom),
     path('delete-room/<int:pk>/', views.deleteRoom),
+
+    path('topics/', views.getTopics),
+    path('messages/', views.getMessages),
 ]
